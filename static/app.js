@@ -1189,3 +1189,102 @@ window.toggleUncertain = async function(itemId) {
         }
     }
 };
+
+// Pull to refresh
+(function() {
+    const ptrEl = document.getElementById('pull-to-refresh');
+    if (!ptrEl) return;
+
+    const spinner = ptrEl.querySelector('.pull-to-refresh-spinner');
+    const threshold = 80; // px to trigger refresh
+    const maxPull = 120; // max pull distance
+
+    let startY = 0;
+    let currentY = 0;
+    let isPulling = false;
+    let isRefreshing = false;
+
+    function canPull() {
+        // Only pull when at top of page and no modal is open
+        return window.scrollY === 0 &&
+               !document.querySelector('[x-show="showAddItem"]:not([style*="display: none"])') &&
+               !document.querySelector('[x-show="showManageSections"]:not([style*="display: none"])') &&
+               !document.querySelector('[x-show="showSettings"]:not([style*="display: none"])');
+    }
+
+    document.addEventListener('touchstart', (e) => {
+        if (isRefreshing || !canPull()) return;
+        startY = e.touches[0].pageY;
+        isPulling = false;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        if (isRefreshing || startY === 0) return;
+
+        currentY = e.touches[0].pageY;
+        const pullDistance = currentY - startY;
+
+        // Only activate if pulling down from top
+        if (pullDistance > 0 && window.scrollY === 0) {
+            isPulling = true;
+            ptrEl.classList.add('pulling');
+
+            // Calculate height with resistance
+            const height = Math.min(pullDistance * 0.5, maxPull);
+            ptrEl.style.height = height + 'px';
+
+            // Rotate spinner based on pull
+            const rotation = (height / maxPull) * 360;
+            spinner.style.transform = `rotate(${rotation}deg)`;
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+        if (!isPulling) {
+            startY = 0;
+            return;
+        }
+
+        const pullDistance = currentY - startY;
+
+        if (pullDistance * 0.5 >= threshold && !isRefreshing) {
+            // Trigger refresh
+            isRefreshing = true;
+            ptrEl.classList.remove('pulling');
+            ptrEl.classList.add('refreshing');
+            ptrEl.style.height = '50px';
+
+            // Do the refresh
+            doRefresh().finally(() => {
+                isRefreshing = false;
+                ptrEl.classList.remove('refreshing');
+                ptrEl.style.height = '0';
+            });
+        } else {
+            // Cancel - snap back
+            ptrEl.classList.remove('pulling');
+            ptrEl.style.height = '0';
+        }
+
+        startY = 0;
+        currentY = 0;
+        isPulling = false;
+    }, { passive: true });
+
+    async function doRefresh() {
+        // Get Alpine component and call fullRefresh
+        const appEl = document.querySelector('[x-data="shoppingList()"]');
+        if (appEl && window.Alpine) {
+            const data = Alpine.$data(appEl);
+            if (data && data.fullRefresh) {
+                await data.fullRefresh();
+            }
+        } else {
+            // Fallback - just reload the page
+            window.location.reload();
+        }
+
+        // Minimum spinner time for UX
+        await new Promise(r => setTimeout(r, 500));
+    }
+})();
