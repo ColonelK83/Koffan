@@ -74,7 +74,12 @@
   "offline": {
     "title": "Offline-Modus",
     "message": "Sie sind offline. Alle Änderungen werden automatisch synchronisiert, wenn die Verbindung wiederhergestellt ist.",
-    "hint": "Sie können weiterhin Produkte hinzufügen und abhaken",
-    "action_blocked": "Diese Aktion erfordert eine Internetverbindung"
+    "hint": "Änderungen werden automatisch synchronisiert",
+    "action_blocked": "Diese Aktion erfordert eine Internetverbindung",
+    "available_actions": "Offline verfügbar:",
+    "can_add": "Produkte hinzufügen",
+    "can_toggle": "Abhaken und Häkchen entfernen",
+    "can_edit": "Produkte bearbeiten",
+    "can_uncertain": "Als unsicher markieren"
   }
 }

@@ -340,8 +340,40 @@
                 </button>
             </div>
             <p class="text-sm text-stone-600 mb-4" x-text="t('offline.message')"></p>
+
+            <!-- Available actions -->
+            <div class="bg-stone-50 rounded-lg p-3 mb-4">
+                <p class="text-xs font-medium text-stone-500 mb-2" x-text="t('offline.available_actions')"></p>
+                <ul class="space-y-1.5">
+                    <li class="flex items-center gap-2 text-sm text-stone-600">
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span x-text="t('offline.can_add')"></span>
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-stone-600">
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span x-text="t('offline.can_toggle')"></span>
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-stone-600">
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span x-text="t('offline.can_edit')"></span>
+                    </li>
+                    <li class="flex items-center gap-2 text-sm text-stone-600">
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span x-text="t('offline.can_uncertain')"></span>
+                    </li>
+                </ul>
+            </div>
+
             <div class="flex items-center gap-2 text-xs text-stone-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <span x-text="t('offline.hint')"></span>

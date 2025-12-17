@@ -35,11 +35,14 @@ I built the first version in **Next.js**, but it turned out to be very resource-
 ## Features
 
 - **Ultra-lightweight** - ~16 MB on disk, ~2.5 MB RAM
+- **PWA** - Install on your phone like a native app
+- **Offline mode** - Add, edit, check/uncheck products without internet (auto-sync when back online)
 - Organize products into sections (e.g., Dairy, Vegetables, Cleaning)
 - Mark products as purchased
 - Mark products as "uncertain" (can't find it in the store)
 - Real-time synchronization (WebSocket)
 - Responsive interface (mobile-first)
+- Multi-language support (PL, EN, DE, ES, FR, PT)
 - Simple login system
 - Rate limiting protection against brute-force attacks
 

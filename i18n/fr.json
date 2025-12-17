@@ -74,7 +74,12 @@
   "offline": {
     "title": "Mode hors ligne",
     "message": "Vous êtes hors ligne. Toutes les modifications seront automatiquement synchronisées lorsque la connexion sera rétablie.",
-    "hint": "Vous pouvez toujours ajouter et cocher des produits",
-    "action_blocked": "Cette action nécessite une connexion internet"
+    "hint": "Les modifications seront synchronisées automatiquement",
+    "action_blocked": "Cette action nécessite une connexion internet",
+    "available_actions": "Disponible hors ligne :",
+    "can_add": "Ajouter des produits",
+    "can_toggle": "Cocher et décocher",
+    "can_edit": "Modifier des produits",
+    "can_uncertain": "Marquer comme incertain"
   }
 }

@@ -74,7 +74,12 @@
   "offline": {
     "title": "Tryb offline",
     "message": "Jesteś w trybie offline. Wszystkie zmiany zostaną automatycznie zsynchronizowane po przywróceniu połączenia.",
-    "hint": "Możesz nadal dodawać i zaznaczać produkty",
-    "action_blocked": "Ta akcja wymaga połączenia z internetem"
+    "hint": "Zmiany zsynchronizują się automatycznie",
+    "action_blocked": "Ta akcja wymaga połączenia z internetem",
+    "available_actions": "Dostępne offline:",
+    "can_add": "Dodawanie produktów",
+    "can_toggle": "Zaznaczanie i odznaczanie",
+    "can_edit": "Edycja produktów",
+    "can_uncertain": "Oznaczanie jako niepewne"
   }
 }
