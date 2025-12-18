@@ -34,10 +34,7 @@
 
     <!-- Delete button -->
     <button
-        hx-delete="/items/{{.Item.ID}}"
-        hx-target="#item-{{.Item.ID}}"
-        hx-swap="outerHTML"
-        hx-on::after-request="htmx.trigger('#stats-container', 'refresh')"
+        @click="if(confirm(t('confirm.delete_item', {name: '{{.Item.Name}}'}))) { document.getElementById('item-{{.Item.ID}}').classList.add('item-exit'); setTimeout(() => htmx.ajax('DELETE', '/items/{{.Item.ID}}', {target: '#item-{{.Item.ID}}', swap: 'outerHTML'}).then(() => htmx.trigger('#stats-container', 'refresh')), 200); }"
         class="p-1.5 rounded-md text-stone-300 hover:text-red-500 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
     >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

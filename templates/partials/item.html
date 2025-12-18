@@ -105,11 +105,7 @@
 
         <!-- Delete -->
         <button
-            hx-delete="/items/{{.Item.ID}}"
-            hx-target="#item-{{.Item.ID}}"
-            hx-swap="outerHTML swap:200ms"
-            hx-on::before-request="this.closest('[id^=item-]').classList.add('item-exit')"
-            hx-on::after-request="htmx.trigger('#stats-container', 'refresh')"
+            @click="if(confirm(t('confirm.delete_item', {name: '{{.Item.Name}}'}))) { document.getElementById('item-{{.Item.ID}}').classList.add('item-exit'); setTimeout(() => htmx.ajax('DELETE', '/items/{{.Item.ID}}', {target: '#item-{{.Item.ID}}', swap: 'outerHTML'}).then(() => htmx.trigger('#stats-container', 'refresh')), 200); }"
             class="p-1.5 rounded-md hover:bg-red-50 text-stone-400 hover:text-red-500 transition-colors"
             :title="t('common.delete')"
         >
