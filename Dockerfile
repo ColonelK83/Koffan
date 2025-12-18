@@ -36,7 +36,7 @@ RUN mkdir -p /data
 
 # Set environment variables
 ENV APP_ENV=production
-ENV PORT=80
+ENV PORT=8321
 ENV DB_PATH=/data/shopping.db
 
 # Expose port
