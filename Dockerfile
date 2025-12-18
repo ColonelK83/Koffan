@@ -40,7 +40,7 @@ ENV PORT=8321
 ENV DB_PATH=/data/shopping.db
 
 # Expose port
-EXPOSE 80
+EXPOSE 8321
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
