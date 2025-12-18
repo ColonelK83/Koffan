@@ -44,7 +44,7 @@ EXPOSE 8321
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:80/login || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:8321/login || exit 1
 
 # Run the application
 CMD ["./shopping-list"]
